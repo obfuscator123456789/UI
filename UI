@@ -113,6 +113,7 @@ do
 			if self.keybinds[key.KeyCode] then
 				for i, bind in pairs(self.keybinds[key.KeyCode]) do
 					bind()
+                    print(bind)
 				end
 			end
 		end)
