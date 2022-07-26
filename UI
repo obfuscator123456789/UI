@@ -109,12 +109,14 @@ do
 		self.keybinds = {}
 		self.ended = {}
 		
-		input.InputBegan:Connect(function(key)
-			if self.keybinds[key.KeyCode] then
-				for i, bind in pairs(self.keybinds[key.KeyCode]) do
-					bind()
-				end
-			end
+		input.InputBegan:Connect(function(key,gameProcessedEvent)
+            if gameProcessedEvent == false then
+                if self.keybinds[key.KeyCode] then
+                    for i, bind in pairs(self.keybinds[key.KeyCode]) do
+                        bind()
+                    end
+                end
+            end
 		end)
 		
 		input.InputEnded:Connect(function(key)
